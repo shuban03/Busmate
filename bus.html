@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Time Management - Login & Signup</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("bus-background.jpg") no-repeat center center/cover;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      .container h2 {
+        margin-bottom: 20px;
+      }
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .btn {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #0056b3;
+      }
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+      .switch {
+        margin-top: 10px;
+      }
+      .switch a {
+        color: #007bff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="login-container">
+      <h2>Login</h2>
+      <div class="error" id="login-error-message"></div>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" required />
+        </div>
+        <div class="input-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <div class="switch">
+        Don't have an account? <a onclick="toggleForm()">Sign up</a>
+      </div>
+    </div>
+
+    <div class="container" id="signup-container" style="display: none">
+      <h2>Sign Up</h2>
+      <div class="error" id="signup-error-message"></div>
+      <form id="signup-form">
+        <div class="input-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" name="username" required />
+        </div>
+        <div class="input-group">
+          <label for="signup-password">Password</label>
+          <input
+            type="password"
+            id="signup-password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="signup-confirm-password"
+            name="confirm-password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+      <div class="switch">
+        Already have an account? <a onclick="toggleForm()">Login</a>
+      </div>
+    </div>
+
+    <script>
+      function toggleForm() {
+        document.getElementById("login-container").style.display =
+          document.getElementById("login-container").style.display === "none"
+            ? "block"
+            : "none";
+        document.getElementById("signup-container").style.display =
+          document.getElementById("signup-container").style.display === "none"
+            ? "block"
+            : "none";
+      }
+
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const username = document.getElementById("login-username").value;
+          const password = document.getElementById("login-password").value;
+          const errorMessage = document.getElementById("login-error-message");
+
+          // Dummy validation (Replace with server-side authentication)
+          if (username === "nnm23cs198" && password === "nnm23cs198") {
+            window.location.href = "trial.html";
+          } else {
+            errorMessage.textContent = "Invalid username or password";
+          }
+        });
+
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const username = document.getElementById("signup-username").value;
+          const password = document.getElementById("signup-password").value;
+          const confirmPassword = document.getElementById(
+            "signup-confirm-password"
+          ).value;
+          const errorMessage = document.getElementById("signup-error-message");
+
+          if (password !== confirmPassword) {
+            errorMessage.textContent = "Passwords do not match";
+            return;
+          }
+          alert("Signup Successful! Please login.");
+          toggleForm();
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Bus Timings & Pass Booking</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+      .form-group {
+        margin: 10px 0;
+      }
+      button {
+        background: blue;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>College Bus Timings</h2>
+      <table>
+        <tr>
+          <th>Route</th>
+          <th>Departure Time</th>
+          <th>Arrival Time</th>
+        </tr>
+        <tr>
+          <td>Route 1</td>
+          <td>7:30 AM</td>
+          <td>8:30 AM</td>
+        </tr>
+        <tr>
+          <td>Route 2</td>
+          <td>8:00 AM</td>
+          <td>9:00 AM</td>
+        </tr>
+      </table>
+
+      <h2>Bus Pass Booking</h2>
+      <form id="busPassForm">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required />
+        </div>
+        <div class="form-group">
+          <label for="route">Select Route:</label>
+          <select id="route">
+            <option value="Route 1">Route 1</option>
+            <option value="Route 2">Route 2</option>
+          </select>
+        </div>
+        <button type="submit">Book Pass</button>
+      </form>
+      <p id="message"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("busPassForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var name = document.getElementById("name").value;
+          var route = document.getElementById("route").value;
+          document.getElementById("message").textContent =
+            "Bus pass booked successfully for " + name + " on " + route;
+        });
+    </script>
+  </body>
+</html>
